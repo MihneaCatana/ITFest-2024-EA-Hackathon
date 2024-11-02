@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react'
 import {Button} from "primereact/button";
 import "./ParkingLot.css"
+import {ConfirmDialog, confirmDialog} from "primereact/confirmdialog";
 
 const occupiedSpotsHardcoded = new Set(['spot-1', 'spot-2', 'spot-7','spot-8', 'spot-11'])
 
@@ -8,16 +9,22 @@ export default function ParkingLot({ rows = 5, cols = 10 }: { rows?: number, col
     const [occupiedSpots, setOccupiedSpots] = useState<Set<string>>(occupiedSpotsHardcoded)
 
     const toggleSpot = (spotId: string, spotNumber?: number) => {
-
-        console.log(spotNumber)
-        setOccupiedSpots(prev => {
-            const newSet = new Set(prev)
-            if (newSet.has(spotId)) {
-                newSet.delete(spotId)
-            } else {
-                newSet.add(spotId)
+      confirmDialog({
+            header: 'Are you sure you want to reserve this spot?',
+            message: 'The payment will start after you enter the parking lot and it will stop after you leave.',
+            icon: 'pi pi-exclamation-triangle',
+            accept: () => {
+                console.log(spotNumber)
+                setOccupiedSpots(prev => {
+                    const newSet = new Set(prev)
+                    if (newSet.has(spotId)) {
+                        newSet.delete(spotId)
+                    } else {
+                        newSet.add(spotId)
+                    }
+                    return newSet
+                })
             }
-            return newSet
         })
     }
 
@@ -59,7 +66,11 @@ export default function ParkingLot({ rows = 5, cols = 10 }: { rows?: number, col
 
     return (
         <div className="container">
-
+            <div className="row-sections">
+                <span>Section A</span>
+                <span>Section B</span>
+                <span>Section C</span>
+            </div>
             <div className="relative">
                 <div
                     className={`grid grid-cols`}
@@ -81,6 +92,8 @@ export default function ParkingLot({ rows = 5, cols = 10 }: { rows?: number, col
             <p className="mt-4" aria-live="polite">
                 Available spots: {availableSpots} / {totalSpots}
             </p>
+            <ConfirmDialog />
         </div>
+
     )
 }

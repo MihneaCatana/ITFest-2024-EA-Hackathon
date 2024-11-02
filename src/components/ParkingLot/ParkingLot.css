@@ -64,3 +64,22 @@
 .mt-4 {
     margin-top: 1rem; /* Tailwind's mt-4 */
 }
+
+.row-sections{
+    margin-bottom: 1rem;
+}
+
+.row-sections > span {
+    font-size: 2rem;
+    margin-left: 14rem;
+}
+
+.row-sections > span:nth-child(2) {
+    font-size: 2rem;
+    margin-left: 20rem;
+}
+
+.row-sections > span:nth-child(3) {
+    font-size: 2rem;
+    margin-left: 20rem;
+}
