@@ -1,0 +1,39 @@
+.auth_container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth_card {
+    height: 460px;
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5%;
+    background-color: #e7e5e8;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.auth_title {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    font-size: 1.4rem;
+}
+
+.auth_inputs {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.auth_password > input {
+    width: 16rem;
+}
+
+.auth_submit {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+

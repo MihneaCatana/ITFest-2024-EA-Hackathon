@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Poppins:wght@300&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 4px;
+    border-radius: 10%;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.leaflet-container {
+    height: 80vh;
+}

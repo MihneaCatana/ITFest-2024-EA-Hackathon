@@ -1,0 +1,66 @@
+/* styles.css */
+.path {
+    background-color: #d1d5db; /* Tailwind's bg-gray-300 */
+    height: 3rem; /* Tailwind's h-12 */
+    border-bottom: none;
+}
+
+.parking-spot {
+    height: 3rem; /* Tailwind's h-12 */
+    width: 100%; /* Tailwind's w-full */
+    display: flex;
+    border-radius: 0;
+    border: 3px solid #ffffff;
+    justify-content: center;
+    transition: background-color 0.2s; /* For smooth hover transition */
+}
+
+.parking-spot.available {
+
+    background-color: green; /* Tailwind's bg-green-500 */
+}
+
+.parking-spot.available:hover {
+    background-color: #4ade80; /* Tailwind's hover:bg-green-600 */
+}
+
+.parking-spot.occupied {
+    background-color: red; /* Tailwind's bg-red-500 */
+}
+
+.parking-spot.occupied:hover {
+    background-color: #fca5a1; /* Tailwind's hover:bg-red-600 */
+}
+
+/* styles.css */
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1rem; /* Tailwind's p-4 */
+}
+
+.relative {
+    position: relative;
+}
+
+.grid {
+    display: grid;
+    gap: 2px; /* Tailwind's gap-[2px] */
+    background-color:#d1d5db; /* Tailwind's bg-black */
+    padding: 2px; /* Tailwind's p-[2px] */
+}
+
+.grid-cols {
+    max-width: calc(100vw - 2rem); /* Ensure it doesn't overflow on mobile */
+}
+
+.vertical-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 2px; /* Tailwind's w-[2px] */
+}
+
+.mt-4 {
+    margin-top: 1rem; /* Tailwind's mt-4 */
+}

@@ -1,0 +1,12 @@
+.homepage_container {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #ede9f1;
+}
+
+.homepage_cards_section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: space-around;
+}
