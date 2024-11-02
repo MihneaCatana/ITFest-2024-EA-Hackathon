@@ -6,12 +6,13 @@
 }
 
 .parking-spot {
-    height: 3rem; /* Tailwind's h-12 */
+    height: 5.5rem; /* Tailwind's h-12 */
     width: 100%; /* Tailwind's w-full */
     display: flex;
     border-radius: 0;
     border: 3px solid #ffffff;
     justify-content: center;
+    font-size: 2.3rem;
     transition: background-color 0.2s; /* For smooth hover transition */
 }
 

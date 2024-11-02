@@ -6,9 +6,6 @@ const Parking = ()=>{
 
     // const {id} = useParams();
 
-
-
-
     return <>
         <Navbar/>
         {/*{id}*/}

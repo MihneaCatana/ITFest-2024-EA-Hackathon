@@ -1,5 +1,7 @@
 import { useState, useMemo } from 'react'
 import {Button} from "primereact/button";
+import {toast, ToastContainer} from "react-toastify";
+
 import "./ParkingLot.css"
 import {ConfirmDialog, confirmDialog} from "primereact/confirmdialog";
 
@@ -15,6 +17,16 @@ export default function ParkingLot({ rows = 5, cols = 10 }: { rows?: number, col
             icon: 'pi pi-exclamation-triangle',
             accept: () => {
                 console.log(spotNumber)
+                toast.success('The reservation has been done successfully!', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: false,
+                    progress: undefined,
+                    theme: "colored",
+                });
                 setOccupiedSpots(prev => {
                     const newSet = new Set(prev)
                     if (newSet.has(spotId)) {
@@ -89,9 +101,10 @@ export default function ParkingLot({ rows = 5, cols = 10 }: { rows?: number, col
                     />
                 ))}
             </div>
-            <p className="mt-4" aria-live="polite">
+            <p style={{textAlign:"center"}} aria-live="polite">
                 Available spots: {availableSpots} / {totalSpots}
             </p>
+            <ToastContainer/>
             <ConfirmDialog />
         </div>
 

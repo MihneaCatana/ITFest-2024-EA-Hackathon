@@ -6,7 +6,7 @@ import Homepage from "./pages/Homepage/Homepage.jsx";
 import Profile from "./pages/Profile/Profile.tsx";
 import Parking from "./pages/Parking/Parking.tsx";
 
-import "primereact/resources/themes/lara-light-indigo/theme.css";
+import "primereact/resources/themes/saga-green/theme.css";
 import './App.css'
 import 'primeicons/primeicons.css';
 

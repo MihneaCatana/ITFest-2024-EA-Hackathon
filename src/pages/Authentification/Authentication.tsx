@@ -159,12 +159,13 @@ const Authentication = () => {
                     : <div className={'auth_title'}>Login</div>
 
                 }
-                <InputText className={'auth_inputs'} placeholder={'Email'} value={email}
+                <InputText className={'auth_inputs'} placeholder={'Email'} value={email} style={{width:'200px'}}
                            onChange={(e) => setEmail(e.target.value)}/>
                 <Password className={'auth_inputs auth_password'} placeholder={'Password'} feedback={false}
                           value={password}
+                          style={{width:'197px'}}
                           onChange={(e) => setPassword(e.target.value)}
-                          toggleMask/>
+                          />
                 <Button className={'auth_submit'} onClick={submit} label={registerMode ? 'Register' : 'Login'}/>
                 <Button className={'auth_changeMode'} label={registerMode ? "Already have an account?" : "Register now"}
                         onClick={() => {

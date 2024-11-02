@@ -76,7 +76,7 @@ const Homepage = () => {
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
-                <Marker position={[latitude,longitude]}>
+                <Marker position={[44.4480,26.0991]}>
                     <Popup>
                         This is your current location.
                     </Popup>
