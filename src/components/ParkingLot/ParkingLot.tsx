@@ -9,6 +9,7 @@ const occupiedSpotsHardcoded = new Set(['spot-1', 'spot-2', 'spot-7','spot-8', '
 
 export default function ParkingLot({ rows = 5, cols = 10 }: { rows?: number, cols?: number }) {
     const [occupiedSpots, setOccupiedSpots] = useState<Set<string>>(occupiedSpotsHardcoded)
+    const [oneReservationExcedeed, setOneReservation] = useState(false)
 
     const toggleSpot = (spotId: string, spotNumber?: number) => {
       confirmDialog({
@@ -63,8 +64,9 @@ export default function ParkingLot({ rows = 5, cols = 10 }: { rows?: number, col
             <Button
                 key={spot.id}
                 className={spotClass}
+
                 onClick={() => toggleSpot(spot.id, spot.number)}
-                disabled={isOccupied}
+                disabled={isOccupied || oneReservationExcedeed}
                 aria-label={`Parking spot ${spot.number}, ${isOccupied ? 'occupied' : 'available'}`}
             >
                 {spot.number}
@@ -104,6 +106,27 @@ export default function ParkingLot({ rows = 5, cols = 10 }: { rows?: number, col
             <p style={{textAlign:"center"}} aria-live="polite">
                 Available spots: {availableSpots} / {totalSpots}
             </p>
+            <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                <Button disabled={oneReservationExcedeed} onClick={()=> {
+                    setOccupiedSpots((prev)=>{
+                        const newSet = new Set(prev)
+                        newSet.add('spot-41')
+                        return newSet;
+                    })
+                    setOneReservation(true);
+                    toast.success('The reservation has been done successfully!', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: false,
+                    progress: undefined,
+                    theme: "colored",
+                })}}
+
+                > Assign the closest spot</Button>
+            </div>
             <ToastContainer/>
             <ConfirmDialog />
         </div>

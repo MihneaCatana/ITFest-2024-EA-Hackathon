@@ -271,7 +271,6 @@ const Profile = () => {
         }}>
 
             {historyReservations.map((historyReserve : any)=>{
-
                return (
                    <CardComponent style={{marginBottom: 10}}>
                     <div>Place: <b>{historyReserve.mallId}</b> </div>
@@ -281,10 +280,7 @@ const Profile = () => {
                </CardComponent>
                )
             })}
-
-
         </Dialog>
-        {console.log(badgesList)}
     </>
 }
 

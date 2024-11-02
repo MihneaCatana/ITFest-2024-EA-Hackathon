@@ -5,24 +5,18 @@ import {CircleMarker, MapContainer, Marker, Popup, TileLayer} from "react-leafle
 import {useEffect, useState} from "react";
 import {Button} from "primereact/button";
 import {useNavigate} from "react-router-dom";
+import Axios from "axios";
 
 const Homepage = () => {
 
-    const [loading, setLoading] = useState(true);
-    const [latitude, setLatitude] = useState(0)
-    const [longitude, setLongitude] = useState(0)
-    navigator.geolocation.getCurrentPosition((result)=> {
-        setLongitude(result.coords.longitude)
-        setLatitude(result.coords.latitude)
-    })
 
+    const [malls, setMalls] = useState([]);
 
     useEffect(() => {
-        navigator.geolocation.getCurrentPosition((result)=> {
-            setLongitude(result.coords.longitude)
-            setLatitude(result.coords.latitude)
-            setLoading(false)
+        Axios.get('http://localhost:8080/mall/getAll').then(res => {
+            setMalls(res.data);
         })
+
 
     }, []);
 
@@ -71,7 +65,7 @@ const Homepage = () => {
         <div className='homepage_container'>
             <Navbar/>
 
-            {!loading &&  <MapContainer center={[44.4480,26.0991]} zoom={15} scrollWheelZoom={true}>
+            { <MapContainer center={[44.4480,26.0991]} zoom={15} scrollWheelZoom={true}>
                 <TileLayer
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -96,7 +90,6 @@ const Homepage = () => {
                 </CircleMarker>)}
 
             </MapContainer>}
-
         </div>
     </>
 }
