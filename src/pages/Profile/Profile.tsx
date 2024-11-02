@@ -143,7 +143,14 @@ const Profile = () => {
                         }}>
                             {badge.name}
                             <img width={80} src={badge.badgeImg} className={badge.used ? "greyscale" : ""}/>
-                            <Button onClick={()=>toast.success('The discount coupon has been selected with success!', {
+                            <Button onClick={()=>{
+
+
+                                Axios.put('http://localhost:8080/badges/modify/'+ badge.id).then(()=>{
+
+                                });
+
+                                toast.success('The discount coupon has been selected with success!', {
                                 position: "top-right",
                                 autoClose: 5000,
                                 hideProgressBar: false,
@@ -152,7 +159,7 @@ const Profile = () => {
                                 draggable: true,
                                 progress: undefined,
                                 theme: "colored",
-                            })} disabled={badge.used}> Activate {badge.discount}% discount</Button>
+                            })}} disabled={badge.used}> Activate {badge.discount}% discount</Button>
                         </div>
 
                     )
@@ -275,7 +282,7 @@ const Profile = () => {
                    <CardComponent style={{marginBottom: 10}}>
                     <div>Place: <b>{historyReserve.mallId}</b> </div>
                     <div>Spot: <b>{historyReserve.parkingSpot}{historyReserve.parkingSector}</b></div>
-                    <div>Period: <b>{historyReserve.startparking} - {historyReserve.endParking.split(" ")[1]}</b></div>
+                    <div>Period: <b>{historyReserve.startparking} - {historyReserve.endParking?.split(" ")[1]}</b></div>
                     <div> Price: <b>{historyReserve.paymentAmount} RON</b></div>
                </CardComponent>
                )

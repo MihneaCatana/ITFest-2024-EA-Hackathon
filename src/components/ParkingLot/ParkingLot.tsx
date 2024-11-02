@@ -4,6 +4,7 @@ import {toast, ToastContainer} from "react-toastify";
 
 import "./ParkingLot.css"
 import {ConfirmDialog, confirmDialog} from "primereact/confirmdialog";
+import Axios from "axios";
 
 const occupiedSpotsHardcoded = new Set(['spot-1', 'spot-2', 'spot-7','spot-8', 'spot-11'])
 
@@ -11,13 +12,17 @@ export default function ParkingLot({ rows = 5, cols = 10 }: { rows?: number, col
     const [occupiedSpots, setOccupiedSpots] = useState<Set<string>>(occupiedSpotsHardcoded)
     const [oneReservationExcedeed, setOneReservation] = useState(false)
 
+
     const toggleSpot = (spotId: string, spotNumber?: number) => {
       confirmDialog({
             header: 'Are you sure you want to reserve this spot?',
             message: 'The payment will start after you enter the parking lot and it will stop after you leave.',
             icon: 'pi pi-exclamation-triangle',
             accept: () => {
-                console.log(spotNumber)
+                Axios.put('http://localhost:8080/spots/put/'+ spotNumber +'/B/14').then((res) => {
+                    console.log(res.data)
+                    console.log(spotNumber)
+                })
                 toast.success('The reservation has been done successfully!', {
                     position: "top-right",
                     autoClose: 5000,
@@ -37,6 +42,8 @@ export default function ParkingLot({ rows = 5, cols = 10 }: { rows?: number, col
                     }
                     return newSet
                 })
+
+
             }
         })
     }
@@ -112,6 +119,9 @@ export default function ParkingLot({ rows = 5, cols = 10 }: { rows?: number, col
                         const newSet = new Set(prev)
                         newSet.add('spot-41')
                         return newSet;
+                    })
+                    Axios.put('http://localhost:8080/spots/put/25/A/14',).then((res) => {
+                        console.log(res.data)
                     })
                     setOneReservation(true);
                     toast.success('The reservation has been done successfully!', {
